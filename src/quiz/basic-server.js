@@ -45,6 +45,10 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify(incidents.filter((incident) => {
                 return incident.id === `MABOS00${id}`
             })));
+        } else {
+            // If not all parameters are found, send an error reponse
+            res.writeHead(400, { 'Content-Type': 'text/plain' });
+            res.end('Invalid parameters in the URL');
         }
     } else {
         // If the request is for an unsupported endpoint, send a not found response
