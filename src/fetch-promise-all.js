@@ -14,6 +14,9 @@ const fetchPromise1 = fetch(
         console.log(`${response.url}: ${response.status}`);
       }
     })
+
+    //Any one of the URLs being improperly formed causes this to return,
+    //regardless of whether or not the other URLs work properly.
     .catch((error) => {
         console.error(`Failed to fetch: ${error}`);
     });

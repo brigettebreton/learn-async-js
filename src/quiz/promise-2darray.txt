@@ -1,1 +1,10 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+
+The code begins by executing the first console.log() statement, "Sum called ...". The code 
+then executes the `if` statement(if(Array.isArray(arr))), which checks if the passed object 
+is an array. If not, it gets automatically rejected (this is why the reject happens before 
+the resolve). The code then tries to execute sumPromise1 and sumPromise2. sumPromise2 gets 
+rejected before sumPromise1 gets resolved. This is because sumPromise1 takes more time to 
+do, and also since sumPromise2 is just rejecting, it completes before sumPromise1. The first 
+set of "Sum called ..." and "returning from sum ..." are from sumPromise1, and the second set 
+(and rejection) are from sumPromise2. sumPromise1 then finishes after sumPromise2's rejection.
